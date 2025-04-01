@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 
@@ -8,6 +10,8 @@ public class Player : MonoBehaviour
 {
 
     public SIDE m_Side = SIDE.Mid;
+    bool alive = true;
+    float horizontalInput;
     float NewXPos = 0f;
     [HideInInspector]
     public bool SwipeLeft, SwipeRight, SwipeUp, SwipeDown;
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!alive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
         SwipeUp = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
@@ -67,6 +72,13 @@ public class Player : MonoBehaviour
             }
         }
 
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        if (transform.position.y < -5)
+        {
+            Die();
+        }
+
         Vector3 moveVector = new Vector3(x - transform.position.x, y*Time.deltaTime, FwdSpeed*Time.deltaTime);
         x = Mathf.Lerp(x,NewXPos, Time.deltaTime*SpeedDoge);
         m_char.Move(moveVector);
@@ -95,5 +107,11 @@ public class Player : MonoBehaviour
             m_Animator.Play("Falling");
         }
     }
-   
+
+    public void Die()
+    {
+        alive = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
