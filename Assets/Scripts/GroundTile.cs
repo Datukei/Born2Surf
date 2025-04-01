@@ -8,6 +8,7 @@ public class GroundTile : MonoBehaviour
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
         SpawnCoins();
+        SpawnObstacle();
      
     }
 
@@ -26,6 +27,23 @@ public class GroundTile : MonoBehaviour
     }
 
     public GameObject coinPrefab;
+    public GameObject ObstacleSandPrefab;
+
+
+    void SpawnObstacle ()
+    {
+        int obstacleSpawnIndex = Random.Range(2, 5);
+        Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
+
+        Instantiate(ObstacleSandPrefab, spawnPoint.position, Quaternion.identity, transform);
+    }
+
+
+
+
+
+
+
 
 
     void SpawnCoins()
