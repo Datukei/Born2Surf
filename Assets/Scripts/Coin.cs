@@ -3,7 +3,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public float turnSpeed = 90f;
-
+    public int value;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         }
 
         Destroy(gameObject);
-
+        CoinCounter.Instance.IncreaseCoins(value);
 
     }
 
