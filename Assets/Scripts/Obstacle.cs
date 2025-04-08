@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    Player Player; 
+    PlayerMovement PlayerMovement; 
 
 
 
    private void Start()
     {
-        Player = GameObject.FindAnyObjectByType<Player>();
+        PlayerMovement = GameObject.FindAnyObjectByType<PlayerMovement>();
     }
 
 
@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Player.Die();
+            PlayerMovement.Die();
         }
     }
 

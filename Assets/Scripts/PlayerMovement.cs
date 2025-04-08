@@ -1,4 +1,4 @@
-/*  UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -23,7 +23,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        if(transform.position.y < -5)
+        {
+            Die();
+        }
     }
 
     public void Die()
@@ -34,4 +39,3 @@ public class PlayerMovement : MonoBehaviour
 
 
 }
-*/
