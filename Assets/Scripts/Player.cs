@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         alive = false;
+        Debug.log(alive);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
