@@ -25,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(transform.position.y < -5)
+        /*if(transform.position.y < -5)
         {
             Die();
-        }
+        } */
     }
+
+
 
     public void Die()
     {

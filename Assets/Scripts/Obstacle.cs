@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -11,15 +12,15 @@ public class Obstacle : MonoBehaviour
         Player = GameObject.FindAnyObjectByType<Player>();
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+ /*
+       private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name == "Player")
+        if (other.GetComponent<Player>() != null)
         {
             Player.Die();
         }
     }
-
+   */
 
 
 

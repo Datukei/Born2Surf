@@ -1,20 +1,21 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-[System.Serializable]
 
 public enum SIDE { Left, Mid, Right };
 public class Player : MonoBehaviour
 {
 
+    bool isAlive = true;
+    bool canDie = false;
+    private float respawnDelay = 1f;
     public SIDE m_Side = SIDE.Mid;
-    bool alive = true;
     float horizontalInput;
     float NewXPos = 0f;
-    [HideInInspector]
     public bool SwipeLeft, SwipeRight, SwipeUp, SwipeDown;
     public float XValue;
     private CharacterController m_char;
@@ -29,18 +30,29 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isAlive = true;
+        StartCoroutine(EnableDeathAfterDelay(1f));
         m_char = GetComponent<CharacterController>();
         m_Animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
+    }
+    IEnumerator EnableDeathAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canDie = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!alive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
         SwipeUp = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+
+        if (transform.position.y < -5)
+        {
+            Die();
+        }
 
         if (SwipeLeft)
         {
@@ -75,16 +87,12 @@ public class Player : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (transform.position.y < -5)
-        {
-            Die();
-        }
-
         Vector3 moveVector = new Vector3(x - transform.position.x, y*Time.deltaTime, FwdSpeed*Time.deltaTime);
         x = Mathf.Lerp(x,NewXPos, Time.deltaTime*SpeedDoge);
         m_char.Move(moveVector);
         Jump();
     }
+
 
     public void Jump()
     {
@@ -109,10 +117,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(!isAlive || !canDie) return;
+
+        if (other.CompareTag("Obstacle"))
+        {
+            Die();
+        }
+    }
+
+
     public void Die()
     {
-        alive = false;
-        Debug.log(alive);
+        isAlive = false;
+        Invoke("RestartLevel", respawnDelay);
+    }
+
+    private void RestartLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
