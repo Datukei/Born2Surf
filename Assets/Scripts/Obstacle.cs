@@ -12,17 +12,6 @@ public class Obstacle : MonoBehaviour
         Player = GameObject.FindAnyObjectByType<Player>();
     }
 
- /*
-       private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>() != null)
-        {
-            Player.Die();
-        }
-    }
-   */
-
-
 
     void Update()
     {

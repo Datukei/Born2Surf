@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
 {
 
     bool isAlive = true;
-    bool canDie = false;
-    private float respawnDelay = 1f;
     public SIDE m_Side = SIDE.Mid;
     float horizontalInput;
     float NewXPos = 0f;
@@ -31,15 +29,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         isAlive = true;
-        StartCoroutine(EnableDeathAfterDelay(1f));
         m_char = GetComponent<CharacterController>();
         m_Animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
-    }
-    IEnumerator EnableDeathAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        canDie = true;
     }
 
     // Update is called once per frame
@@ -119,19 +111,24 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(!isAlive || !canDie) return;
+        Debug.Log("Trigger with: " + other.name);
+        if(!isAlive) return;
+
+        if (other.CompareTag("GroundTitle")) return;
 
         if (other.CompareTag("Obstacle"))
         {
+            Debug.Log("Obstacle Hit!");
             Die();
         }
     }
 
 
+
     public void Die()
     {
         isAlive = false;
-        Invoke("RestartLevel", respawnDelay);
+        Debug.Log("hit");
     }
 
     private void RestartLevel()
