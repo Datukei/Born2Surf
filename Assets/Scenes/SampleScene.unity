@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &44118065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 933575647536077266, guid: c841dfe97ea0f7b4887903c13aa3bd3b, type: 3}
+  m_PrefabInstance: {fileID: 1899433879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &187165034
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +188,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -315,6 +327,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1710445508}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0fa7ba0112a874ea4e320aa0cb6436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 44118065}
+  currentCoins: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +352,7 @@ GameObject:
   - component: {fileID: 410087041}
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
+  - component: {fileID: 410087043}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -406,13 +433,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +463,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &410087043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410087039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72b423c9680bfe4d9d5026f2c0aaa27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +659,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 933575647536077266, guid: c841dfe97ea0f7b4887903c13aa3bd3b, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 933575647536077266, guid: c841dfe97ea0f7b4887903c13aa3bd3b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279229432
+      objectReference: {fileID: 0}
     - target: {fileID: 1089525280922857708, guid: c841dfe97ea0f7b4887903c13aa3bd3b, type: 3}
       propertyPath: m_Name
       value: Canvas
