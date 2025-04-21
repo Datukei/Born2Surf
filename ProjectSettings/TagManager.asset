@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Coin
   - Obstacle
-  - GroundTitle
+  - GroundTile
   layers:
   - Default
   - TransparentFX

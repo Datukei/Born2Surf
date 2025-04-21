@@ -48,6 +48,13 @@ public class Player : MonoBehaviour
 
         if (SwipeLeft)
         {
+            if (!(m_char.isGrounded))
+            {
+                if (m_char.velocity.y < -0.1f)
+                {
+                    m_Animator.Play("Falling");
+                }
+            }
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = -XValue;
@@ -63,6 +70,13 @@ public class Player : MonoBehaviour
         }
         else if (SwipeRight)
         {
+            if (!(m_char.isGrounded))
+            {
+                if (m_char.velocity.y < -0.1f)
+                {
+                    m_Animator.Play("Falling");
+                }
+            }
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = XValue;
@@ -75,6 +89,7 @@ public class Player : MonoBehaviour
                 m_Side = SIDE.Mid;
                 m_Animator.Play("DodgeRight");
             }
+            
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
@@ -90,6 +105,7 @@ public class Player : MonoBehaviour
     {
         if(m_char.isGrounded)
         {
+            Debug.Log(m_char.isGrounded);
             if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Falling"))
             {
                 m_Animator.Play("Landing");
@@ -111,15 +127,15 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger with: " + other.name);
+        
         if(!isAlive) return;
 
-        if (other.CompareTag("GroundTitle")) return;
+        if (other.CompareTag("GroundTile")) return;
 
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle Hit!");
             Die();
+            Debug.Log("Obstacle Hit!");
         }
     }
 
@@ -129,6 +145,7 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         Debug.Log("hit");
+        RestartLevel(); 
     }
 
     private void RestartLevel()
