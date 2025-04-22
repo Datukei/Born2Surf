@@ -1,30 +1,23 @@
+using System;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    PlayerMovement PlayerMovement; 
+    Player Player;
 
 
 
-   private void Start()
+    private void Start()
     {
-        PlayerMovement = GameObject.FindAnyObjectByType<PlayerMovement>();
+        Player = GameObject.FindAnyObjectByType<Player>();
     }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            PlayerMovement.Die();
-        }
-    }
-
-
 
 
     void Update()
     {
-        
+
     }
 }
+
+
+
