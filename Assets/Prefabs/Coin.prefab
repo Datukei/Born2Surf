@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 1
-  requiredAmount: 25
-  NextLevel: Level_2
+  requiredAmount: 20
+  NextLevel: Level _2
