@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
 {
 
     bool isAlive = true;
-    bool canDie = false;
-    private float respawnDelay = 1f;
     public SIDE m_Side = SIDE.Mid;
     float horizontalInput;
     float NewXPos = 0f;
@@ -31,15 +29,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         isAlive = true;
-        StartCoroutine(EnableDeathAfterDelay(1f));
         m_char = GetComponent<CharacterController>();
         m_Animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
-    }
-    IEnumerator EnableDeathAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        canDie = true;
     }
 
     // Update is called once per frame
@@ -56,6 +48,13 @@ public class Player : MonoBehaviour
 
         if (SwipeLeft)
         {
+            if (!(m_char.isGrounded))
+            {
+                if (m_char.velocity.y < -0.1f)
+                {
+                    m_Animator.Play("Falling");
+                }
+            }
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = -XValue;
@@ -71,6 +70,13 @@ public class Player : MonoBehaviour
         }
         else if (SwipeRight)
         {
+            if (!(m_char.isGrounded))
+            {
+                if (m_char.velocity.y < -0.1f)
+                {
+                    m_Animator.Play("Falling");
+                }
+            }
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = XValue;
@@ -83,6 +89,7 @@ public class Player : MonoBehaviour
                 m_Side = SIDE.Mid;
                 m_Animator.Play("DodgeRight");
             }
+            
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
@@ -98,6 +105,7 @@ public class Player : MonoBehaviour
     {
         if(m_char.isGrounded)
         {
+            Debug.Log(m_char.isGrounded);
             if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Falling"))
             {
                 m_Animator.Play("Landing");
@@ -119,19 +127,25 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(!isAlive || !canDie) return;
+        
+        if(!isAlive) return;
+
+        if (other.CompareTag("GroundTile")) return;
 
         if (other.CompareTag("Obstacle"))
         {
             Die();
+            Debug.Log("Obstacle Hit!");
         }
     }
+
 
 
     public void Die()
     {
         isAlive = false;
-        Invoke("RestartLevel", respawnDelay);
+        Debug.Log("hit");
+        RestartLevel(); 
     }
 
     private void RestartLevel()
