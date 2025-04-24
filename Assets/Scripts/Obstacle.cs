@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-
     Player Player; 
 
-   private void Start()
+    private void Start()
     {
         Player = GameObject.FindAnyObjectByType<Player>();
     }
@@ -14,6 +13,9 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
+
+
+

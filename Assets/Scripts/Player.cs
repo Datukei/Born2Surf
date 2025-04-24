@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
                 m_Side = SIDE.Mid;
                 m_Animator.Play("DodgeRight");
             }
-            
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
@@ -103,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(m_char.isGrounded)
+        if (m_char.isGrounded)
         {
             Debug.Log(m_char.isGrounded);
             if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Falling"))
@@ -111,24 +110,24 @@ public class Player : MonoBehaviour
                 m_Animator.Play("Landing");
                 InJump = false;
             }
-            if(SwipeUp)
+            if (SwipeUp)
             {
                 y = JumpPower;
                 m_Animator.CrossFadeInFixedTime("Jump", 0.1f);
                 InJump = true;
             }
-        }else
+        }
+        else
         {
             y -= JumpPower * 2 * Time.deltaTime;
-            if(m_char.velocity.y<-0.1f)
-            m_Animator.Play("Falling");
+            if (m_char.velocity.y < -0.1f)
+                m_Animator.Play("Falling");
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        
-        if(!isAlive) return;
+        if (!isAlive) return;
 
         if (other.CompareTag("GroundTile")) return;
 
@@ -145,12 +144,19 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         Debug.Log("hit");
+
         RestartLevel(); 
     }
 
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+public void SetMoveSpeed(float newSpeedAdjustment)
+    {
+        FwdSpeed += newSpeedAdjustment;
     }
 
 }
