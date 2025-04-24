@@ -153,9 +153,4 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void SetMoveSpeed(float newSpeedAdjustment)
-    {
-        FwdSpeed += newSpeedAdjustment;
-    }
-
 }
