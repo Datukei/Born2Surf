@@ -623,11 +623,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7025608171146227098, guid: a4f33832409ab80498856785bcaebffb, type: 3}
       insertIndex: -1
-<<<<<<< HEAD
       addedObject: {fileID: 1710445517}
-=======
-      addedObject: {fileID: 2078559126}
->>>>>>> origin/copyoflevel2
   m_SourcePrefab: {fileID: 100100000, guid: a4f33832409ab80498856785bcaebffb, type: 3}
 --- !u!1 &1661763090 stripped
 GameObject:
@@ -827,34 +823,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9206786c72233104aa8a38c8df307f94, type: 3}
---- !u!1 &2078559122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7025608171146227098, guid: a4f33832409ab80498856785bcaebffb, type: 3}
-  m_PrefabInstance: {fileID: 1661763089}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &2078559126
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078559122}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.1
-  m_Height: 7
-  m_Direction: 1
-  m_Center: {x: 0, y: 2.3, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
