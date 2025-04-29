@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [System.Serializable]
-
+//hi
 public enum SIDE { Left, Mid, Right };
 public class Player : MonoBehaviour
 {
