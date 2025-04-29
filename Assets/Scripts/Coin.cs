@@ -4,6 +4,7 @@ public class Coin : MonoBehaviour
 {
     public float turnSpeed = 90f;
     public int value;
+    public Player player;
 
     private void OnTriggerEnter(Collider other)
     {

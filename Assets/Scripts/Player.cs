@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private float y;
     public bool InJump;
     public float FwdSpeed = 7f;
+    public ScoreManager scoreManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
 
         if (!isAlive)
         {
-            ScoreManager.Instance.currentScore = 0;
+            scoreManager.currentScore = 0;
         }
 
         if (!isAlive) return;
