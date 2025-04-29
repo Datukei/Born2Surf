@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
 
     public SIDE m_Side = SIDE.Mid;
-    bool isAlive = true;
+    public bool isAlive = true;
     float horizontalInput;
     float NewXPos = 0f;
     [HideInInspector]
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private float y;
     public bool InJump;
     public float FwdSpeed = 7f;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +35,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!isAlive)
+        {
+            ScoreManager.Instance.currentScore = 0;
+        }
+
         if (!isAlive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
