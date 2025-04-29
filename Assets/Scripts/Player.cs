@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
 
     public SIDE m_Side = SIDE.Mid;
-    bool alive = true;
+    bool isAlive = true;
     float horizontalInput;
     float NewXPos = 0f;
     [HideInInspector]
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!alive) return;
+        if (!isAlive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
         SwipeUp = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
@@ -108,9 +108,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (!isAlive) return;
+
+        if (other.CompareTag("GroundTile")) return;
+
+        if (other.CompareTag("Obstacle"))
+        {
+            Die();
+            Debug.Log("Obstacle Hit!");
+        }
+    }
+
+
     public void Die()
     {
-        alive = false;
+        isAlive = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
