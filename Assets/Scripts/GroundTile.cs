@@ -9,7 +9,9 @@ public class GroundTile : MonoBehaviour
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
         SpawnCoins();
         SpawnObstacle();
-     
+        SpawnCoins();
+        SpawnObstacle();
+
     }
 
     private void OnTriggerExit(Collider other)
