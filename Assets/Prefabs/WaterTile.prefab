@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527312969594803720}
-  - component: {fileID: 6847875494738464543}
   - component: {fileID: 4662705274864817975}
+  - component: {fileID: -6718719486181036225}
   m_Layer: 0
   m_Name: WaterTile
   m_TagString: Untagged
@@ -38,20 +38,6 @@ Transform:
   - {fileID: 8791996310394322291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6847875494738464543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850083099293728618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada3e6b7838edcc4ebfc7390731d0438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 0}
-  ObstacleSandPrefab: {fileID: 0}
 --- !u!65 &4662705274864817975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73,6 +59,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.25, y: 12.25, z: 12.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6718719486181036225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850083099293728618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d96c13748d2ea4d9db0cce37fcfbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 5478276760329626251, guid: 330b310a839655145b9ecb7080ff7aa1, type: 3}
+  IslandPrefab: {fileID: 513409674905122174, guid: 595509bfec33c404c9c6205c1275e5cc, type: 3}
 --- !u!1 &2373579920827300208
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 527312969594803720}
