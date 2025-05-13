@@ -124,9 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 1
-<<<<<<< HEAD
   requiredAmount: 3
-=======
-  requiredAmount: 20
->>>>>>> copy-copy-final
   NextLevel: Level _2
