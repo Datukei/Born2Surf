@@ -37,10 +37,6 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (!isAlive)
-        {
-            scoreManager.currentScore = 0;
-        }
 
         if (!isAlive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
@@ -89,6 +85,12 @@ public class Player : MonoBehaviour
         x = Mathf.Lerp(x,NewXPos, Time.deltaTime*SpeedDoge);
         m_char.Move(moveVector);
         Jump();
+
+        if (scoreManager.currentScore >= 5 && scoreManager.currentScore < 10)
+        {
+            FwdSpeed = 30;
+        }
+
     }
 
     public void Jump()
@@ -133,7 +135,9 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        scoreManager.currentScore = 0;
     }
+
 
     public void SetMoveSpeed(float newSpeedAdjustment)
     {
