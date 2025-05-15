@@ -18,6 +18,7 @@ public class Collectible : MonoBehaviour
             if (ScoreManager.Instance.currentScore >= requiredAmount)
             {
                 // Load the next level
+                ScoreManager.Instance.currentScore = 0;
                 SceneManager.LoadScene(NextLevel);
             }
 

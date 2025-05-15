@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private float y;
     public bool InJump;
     public float FwdSpeed = 7f;
-    public ScoreManager scoreManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,10 +36,6 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (!isAlive)
-        {
-            scoreManager.currentScore = 0;
-        }
 
         if (!isAlive) return;
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
@@ -116,7 +111,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
+ 
         if (!isAlive) return;
 
         if (other.CompareTag("GroundTile")) return;
@@ -127,13 +122,15 @@ public class Player : MonoBehaviour
             Debug.Log("Obstacle Hit!");
         }
     }
-
+    
 
     public void Die()
     {
         isAlive = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ScoreManager.Instance.currentScore = 0;
     }
+    
 
     public void SetMoveSpeed(float newSpeedAdjustment)
     {
